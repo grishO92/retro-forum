@@ -1,0 +1,41 @@
+.header {
+  background-color: rgb(43, 88, 61);
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  .nav {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .nav-logo,
+    .nav-btn {
+      text-decoration: none;
+      color: whitesmoke;
+      padding: 10px;
+      border: 1px solid whitesmoke;
+      border-radius: 5px;
+    }
+
+    .logo {
+      font-size: 20px;
+    }
+
+    .btns {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+    }
+  }
+}
+
+.footer {
+  background-color: rgb(43, 88, 61);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  color: whitesmoke;
+}
