@@ -24,34 +24,42 @@
       border: 1px solid rgb(43, 88, 61);
       display: flex;
       padding: 20px;
-      gap: 20px;
+      align-items: center;
+      justify-content: space-between;
 
-      .title {
-        color: rgb(43, 88, 61);
-        font-size: 35px;
-        text-decoration: none;
+      width: 60vw;
+
+      .topic {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .title {
+          color: rgb(43, 88, 61);
+          font-size: 35px;
+          text-decoration: none;
+        }
+        .date-time {
+          font-size: 17px;
+          font-weight: 100;
+        }
+        .description {
+          font-size: 25px;
+          font-weight: 300;
+        }
       }
-      .date-time {
-        font-size: 17px;
-        font-weight: 100;
-      }
-      .description {
-        font-size: 25px;
-        font-weight: 300;
-      }
-    }
-    .btns {
-      display: flex;
-      padding: 20px;
-      gap: 20px;
-      .btn {
-        text-decoration: none;
-        background-color: white;
-        color: rgb(43, 88, 61);
-        padding: 10px;
-        border: 1px solid rgb(43, 88, 61);
-        border-radius: 5px;
-        cursor: pointer;
+
+      .btns {
+        display: flex;
+        gap: 20px;
+        .btn {
+          text-decoration: none;
+          background-color: white;
+          color: rgb(43, 88, 61);
+          padding: 10px 20px;
+          border: 1px solid rgb(43, 88, 61);
+          border-radius: 5px;
+          cursor: pointer;
+        }
       }
     }
   }
