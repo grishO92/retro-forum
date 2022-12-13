@@ -21,7 +21,7 @@
       border: 1px solid white;
       border-radius: 5px;
       box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.2);
-      transition-duration: 200ms;
+      transition-duration: 600ms;
 
       &:active {
         transition-duration: 200ms;
@@ -34,6 +34,7 @@
 
     .logo {
       font-size: 20px;
+      transition-duration: 200ms;
 
       &:active {
         transition-duration: 200ms;
@@ -45,6 +46,11 @@
       display: flex;
       flex-direction: row;
       gap: 20px;
+    }
+    .btn-active {
+      background: rgb(255, 145, 34);
+      filter: contrast(2.3);
+      transition-duration: 200ms;
     }
   }
 }

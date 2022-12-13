@@ -84,6 +84,11 @@
             box-shadow: none;
             transform: translateY(5px) translateX(5px);
           }
+          &:focus {
+            background: rgb(255, 145, 34);
+            filter: contrast(2.3);
+            transition-duration: 200ms;
+          }
         }
       }
     }
@@ -245,6 +250,11 @@
               background-color: rgb(49, 100, 71);
               box-shadow: none;
               transform: translateY(5px) translateX(5px);
+            }
+            &:focus {
+              background: rgb(255, 145, 34);
+              filter: contrast(2.3);
+              transition-duration: 200ms;
             }
           }
         }
