@@ -1,0 +1,56 @@
+.header {
+  background-color: rgb(43, 88, 61);
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+
+  .nav {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .nav-logo,
+    .nav-btn {
+      background-color: rgb(83, 136, 104);
+      text-decoration: none;
+      color: white;
+      padding: 10px;
+      border: 1px solid white;
+      border-radius: 5px;
+      box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.2);
+      transition-duration: 600ms;
+
+      &:active {
+        transition-duration: 200ms;
+        box-shadow: none;
+        transform: translateY(5px) translateX(5px);
+        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+        background-color: rgb(63, 105, 80);
+      }
+    }
+
+    .logo {
+      font-size: 20px;
+      transition-duration: 200ms;
+
+      &:active {
+        transition-duration: 200ms;
+        transform: translateY(5px) translateX(5px);
+      }
+    }
+
+    .btns {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+    }
+    .btn-active {
+      background: rgb(255, 145, 34);
+      filter: contrast(2.3);
+      transition-duration: 200ms;
+    }
+  }
+}
