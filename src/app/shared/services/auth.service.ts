@@ -95,7 +95,7 @@ export class AuthService {
       this.error.message = 'Something went wrong!';
       setTimeout(() => {
         this.error.isError = false;
-      }, 2500);
+      }, 2000);
     }
   }
 }
