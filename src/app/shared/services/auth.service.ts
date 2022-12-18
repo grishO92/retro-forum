@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   userData!: IUser | null;
 
-  constructor(private auth: Auth, private router: Router) {
+  constructor(private readonly auth: Auth, private router: Router) {
     user(this.auth).subscribe((user) => {
       if (user) {
         this.userData = user;
