@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "retro-forum": {
+      "hosting": {
+        "retro-forum": [
+          "retro-forum"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "retro-forum"
+  }
+}

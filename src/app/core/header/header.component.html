@@ -12,6 +12,7 @@
     </section>
     <section class="btns">
       <a
+        *ngIf="isLogged"
         class="nav-btn"
         routerLink="/create"
         routerLinkActive="btn-active"
@@ -20,6 +21,7 @@
         >Post</a
       >
       <a
+        *ngIf="!isLogged"
         class="nav-btn"
         routerLink="/login"
         routerLinkActive="btn-active"
@@ -28,6 +30,7 @@
         >Login</a
       >
       <a
+        *ngIf="!isLogged"
         class="nav-btn"
         routerLink="/register"
         routerLinkActive="btn-active"
@@ -35,8 +38,8 @@
         draggable="false"
         >Register</a
       >
-
       <a
+        *ngIf="isLogged"
         class="nav-btn profile"
         routerLink="/profile"
         routerLinkActive="btn-active"
@@ -44,7 +47,6 @@
         draggable="false"
         >Profile</a
       >
-
       <a
         class="nav-btn"
         routerLink="/about"
@@ -53,6 +55,14 @@
         draggable="false"
         >About</a
       >
+      <button
+        *ngIf="isLogged"
+        (click)="logout()"
+        class="nav-btn"
+        draggable="false"
+      >
+        logout
+      </button>
     </section>
   </nav>
 </header>

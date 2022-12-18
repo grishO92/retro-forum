@@ -13,6 +13,13 @@ import { AboutComponent } from './components/about/about.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideFunctions, getFunctions } from '@angular/fire/functions';
+import { AuthService } from './shared/services/auth.service';
+import { FormsModule } from '@angular/forms';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -28,6 +35,16 @@ import { SharedModule } from './shared/shared.module';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule, SharedModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule,
+    SharedModule,
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
+    provideFunctions(() => getFunctions()),
+    provideAuth(() => getAuth()),
+  ],
 })
 export class AppModule {}

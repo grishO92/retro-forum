@@ -2,10 +2,15 @@
   <h2 class="title">Register</h2>
   <form class="form" action="" method="post">
     <label for="email">email</label>
-    <input type="email" id="email" />
+    <input #emailInput type="email" id="email" />
     <label for="pass">password</label>
-    <input type="password" id="paass" />
-    <button class="btn">register</button>
+    <input #passwordInput type="password" id="paass" />
+    <button
+      (click)="register(emailInput.value, passwordInput.value)"
+      class="btn"
+    >
+      register
+    </button>
   </form>
   <p>
     Already have an account? Click

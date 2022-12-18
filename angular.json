@@ -97,6 +97,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "retro-forum:build:production",
+            "firebaseProject": "retro-forum",
+            "firebaseHostingSite": "retro-forum"
+          }
         }
       }
     }
