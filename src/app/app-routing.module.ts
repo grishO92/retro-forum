@@ -9,15 +9,51 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 
+import {
+  AuthGuard,
+  redirectUnauthorizedTo,
+  redirectLoggedInTo,
+} from '@angular/fire/auth-guard';
+import { WrongPageComponent } from './components/wrong-page/wrong-page.component';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToItems = () => redirectLoggedInTo(['']);
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'create', component: CreateComponent },
-  { path: 'details', component: DetailsComponent },
-  { path: 'edit', component: EditComponent },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectLoggedInToItems },
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectLoggedInToItems },
+  },
+  {
+    path: 'profile/:id',
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+  },
+  {
+    path: 'create',
+    component: CreateComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+  },
+  { path: 'details/:id', component: DetailsComponent },
+  {
+    path: 'edit',
+    component: EditComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+  },
   { path: 'about', component: AboutComponent },
+  { path: '**', component: WrongPageComponent },
 ];
 
 @NgModule({

@@ -9,7 +9,7 @@
   border: 1px solid rgb(43, 88, 61);
   border-radius: 13px 0 13px 0;
   height: 80.4vh;
-
+  position: relative;
   .title {
     font-size: 80px;
     font-weight: 900;
@@ -72,6 +72,17 @@
         box-shadow: none;
         transform: translateY(5px) translateX(5px);
       }
+    }
+    .error {
+      color: white;
+      padding: 20px 20px;
+      text-align: center;
+      min-width: 500px;
+      border-radius: 6px 0 0 0;
+      box-shadow: 5px 5px 0px 0px rgba(43, 88, 61, 0.8);
+      background-color: crimson;
+      position: absolute;
+      bottom: -15px;
     }
   }
 }

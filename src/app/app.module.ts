@@ -20,6 +20,7 @@ import { provideFunctions, getFunctions } from '@angular/fire/functions';
 import { AuthService } from './shared/services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { WrongPageComponent } from './components/wrong-page/wrong-page.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
     RegisterComponent,
     AboutComponent,
     ProfileComponent,
+    WrongPageComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

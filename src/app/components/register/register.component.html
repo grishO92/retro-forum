@@ -11,6 +11,7 @@
     >
       register
     </button>
+    <p class="error" *ngIf="error.isError">{{ error.message }}</p>
   </form>
   <p>
     Already have an account? Click
