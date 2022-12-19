@@ -6,6 +6,13 @@ import {
   user,
 } from '@angular/fire/auth';
 
+import {
+  DocumentReference,
+  Firestore,
+  doc,
+  setDoc,
+} from '@angular/fire/firestore';
+
 import { Injectable } from '@angular/core';
 import { LoginData } from '../interfaces/login-data';
 import { IUser } from '../interfaces/user.model';
@@ -16,14 +23,17 @@ import { IError } from '../interfaces/error';
   providedIn: 'root',
 })
 export class AuthService {
-  emailRegex = new RegExp('[a-zA-Z0-9.-_]{6,}@gmail.com');
-  userData!: IUser | null;
+  userData!: IUser | any;
   error: IError = { isError: false, message: '' };
 
-  constructor(private readonly auth: Auth, private router: Router) {
-    user(this.auth).subscribe((user) => {
-      if (user) {
-        this.userData = user;
+  constructor(
+    private readonly auth: Auth,
+    private router: Router,
+    private afs: Firestore
+  ) {
+    user(this.auth).subscribe((curentUser) => {
+      if (curentUser) {
+        this.userData = curentUser;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user')!);
       } else {
@@ -35,7 +45,12 @@ export class AuthService {
 
   async login({ email, password }: LoginData) {
     try {
-      await signInWithEmailAndPassword(this.auth, email, password);
+      const result = await signInWithEmailAndPassword(
+        this.auth,
+        email,
+        password
+      );
+
       this.router.navigate(['']);
     } catch (error: any) {
       this.error.isError = true;
@@ -62,8 +77,13 @@ export class AuthService {
 
   async register({ email, password }: LoginData) {
     try {
-      await createUserWithEmailAndPassword(this.auth, email, password);
-      this.router.navigate(['']);
+      const result = await createUserWithEmailAndPassword(
+        this.auth,
+        email,
+        password
+      );
+      this.setUserData(result.user);
+      this.router.navigate([`/profile/${result.user.uid}`]);
     } catch (error: any) {
       this.error.isError = true;
       if (
@@ -95,7 +115,23 @@ export class AuthService {
       this.error.message = 'Something went wrong!';
       setTimeout(() => {
         this.error.isError = false;
-      }, 1000);
+      }, 2500);
     }
+  }
+
+  async setUserData(user: any) {
+    const userRef: DocumentReference<any> = doc(this.afs, `users/${user.uid}`);
+    const randomDisplayname = 'retro-user-' + Math.random();
+
+    const userData: IUser = {
+      uid: user.uid,
+      email: user.email,
+      displayName: randomDisplayname,
+      photoURL: '',
+      comments: [{ postId: '', message: '' }],
+    };
+    return await setDoc(userRef, userData, {
+      merge: true,
+    });
   }
 }
