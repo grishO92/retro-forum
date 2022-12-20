@@ -10,17 +10,17 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-  constructor(public api: ApiService, private route: ActivatedRoute) {}
   user!: IUser;
   e: any;
   id!: any;
+  constructor(public api: ApiService, private route: ActivatedRoute) {}
+
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.e = this.api.getAllUserData().subscribe((u) => {
-      const result = u.filter((user) => user.uid === this.id);
-      this.user = result[0];
+    this.e = this.api.getAllUserData().subscribe((userArr) => {
+      userArr.filter((user) => user.uid === this.id);
+      this.user = userArr[0];
     });
-
     this.user = this.e;
   }
   ngOnDestroy(): void {
