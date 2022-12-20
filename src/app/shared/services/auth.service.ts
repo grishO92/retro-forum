@@ -15,7 +15,7 @@ import {
 
 import { Injectable } from '@angular/core';
 import { LoginData } from '../interfaces/login-data';
-import { IUser } from '../interfaces/user.model';
+import IUser from '../interfaces/user.model';
 import { Router } from '@angular/router';
 import { IError } from '../interfaces/error';
 
@@ -50,7 +50,7 @@ export class AuthService {
         email,
         password
       );
-
+      // this.setUserData(result.user);
       this.router.navigate(['']);
     } catch (error: any) {
       this.error.isError = true;
@@ -127,8 +127,11 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       displayName: randomDisplayname,
+      nickname: 'newbie',
+      bio: '',
       photoURL: '',
-      comments: [{ postId: '', message: '' }],
+      favorites: [],
+      myTopics: [],
     };
     return await setDoc(userRef, userData, {
       merge: true,

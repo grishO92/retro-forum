@@ -21,6 +21,7 @@ import { AuthService } from './shared/services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { WrongPageComponent } from './components/wrong-page/wrong-page.component';
+import { ApiService } from './shared/services/api.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { WrongPageComponent } from './components/wrong-page/wrong-page.component
     ProfileComponent,
     WrongPageComponent,
   ],
-  providers: [],
+  providers: [AuthService, ApiService],
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,

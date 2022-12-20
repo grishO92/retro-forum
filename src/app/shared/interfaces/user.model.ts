@@ -1,7 +1,10 @@
-export interface IUser {
-  uid: string;
+export default interface IUser {
+  uid?: string;
   email: string;
   displayName: string;
+  nickname: string;
+  bio: string;
   photoURL: string;
-  comments: { postId: string; message: string }[];
+  favorites: [];
+  myTopics: [];
 }

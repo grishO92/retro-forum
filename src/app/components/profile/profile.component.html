@@ -14,15 +14,11 @@
     <section class="user-details">
       <h1 class="profile-page">Profile Page</h1>
       <section class="name">
-        <h2 class="display-name"><span>name: </span>Gosho</h2>
-        <h3 class="nickname"><span>nickname: </span>byrziq</h3>
+        <h2 class="display-name"><span>name: </span>{{ user.displayName }}</h2>
+        <h3 class="nickname"><span>nickname: </span>{{ user.nickname }}</h3>
       </section>
       <section class="description-wrapper">
-        <p class="description">
-          <span>bio: </span> Lorem ipsum, dolor sit amet consectetur adipisicing
-          elit. Inventore sapiente dicta commodi placeat maxime similique dolor
-          qui corporis? Eos, quod.
-        </p>
+        <p class="description"><span>bio: </span> {{ user.bio }}</p>
       </section>
       <section class="btns">
         <button routerLink="/" class="btn">back</button>
